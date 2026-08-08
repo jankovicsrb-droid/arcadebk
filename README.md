@@ -10,11 +10,33 @@ Single-page sajt za klub Arcade u Banji Koviljači. Retrowave/CRT estetika sa ne
 
 ```
 arcadebk/
-├── index.html       # Glavna i jedina stranica
-├── styles.css       # Svi stilovi
+├── index.html       # PRIVREMENO: „Uskoro" landing (ono što domen trenutno prikazuje)
+├── sajt.html        # Pun sajt — radna verzija, noindex dok se ne završi
+├── styles.css       # Svi stilovi za obe stranice
 └── assets/
     └── logo.png     # Logo kluba
 ```
+
+## Trenutno stanje — „Uskoro" landing
+
+Domen prikazuje privremenu stranicu jer pun sajt još čeka podatke (cene za računare i volan, kapacitet za rođendane). Pun sajt živi na `/sajt.html` i može se otvoriti u browseru radi pregleda, ali nosi `noindex, nofollow` da ga Google ne pokupi u nedovršenom stanju.
+
+Landing je na istoj temi i deli isti `styles.css` — stilovi su na dnu fajla, u bloku označenom `„USKORO" stranica`.
+
+### Kako se radi switch kad sajt bude gotov
+
+```bash
+git rm index.html          # baci privremeni landing
+git mv sajt.html index.html
+```
+
+Pa u novom `index.html` obriši red:
+
+```html
+<meta name="robots" content="noindex, nofollow">
+```
+
+I opciono obriši `„USKORO"` blok sa dna `styles.css` — oko 60 linija koje više ništa ne stilizuju. Push na `main` i Vercel odmah objavi.
 
 Bez build koraka, bez dependency-ja, bez JavaScript-a — otvoriš `index.html` u browseru i radi. Fontovi se učitavaju sa Google Fonts (`Audiowide`, `Chakra Petch`, `JetBrains Mono`), što je jedini eksterni zahtev.
 
