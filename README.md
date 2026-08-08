@@ -73,7 +73,6 @@ Cene igara su **po satu**, a minimum zakupa je 30 minuta. Dva izuzetka: stoni fu
 
 Sadržaj koji treba potvrditi sa klubom:
 
-- [ ] **Kapacitet** `SAVRŠENO ZA EKIPU OD 6 - 25` na rođendanskom posteru
 - [ ] **Pomorandža i breskva** (200 din) su unete pod tim imenima kako ih je vlasnik naveo; ako su sokovi, vredi precizirati naziv
 - [ ] **Zapremine** su poznate samo za piva (sva su 0,33 l); sokovi i ostala pića nemaju navedenu količinu, pa im u koloni „Jedinica" stoji `din / kom`
 
