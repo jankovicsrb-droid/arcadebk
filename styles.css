@@ -12,7 +12,7 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
-/* V1 — Full Retrowave CRT */
+/* V1 - Full Retrowave CRT */
 :root {
     color-scheme: dark;
     --cyan: #22e1ff;
@@ -668,7 +668,7 @@ h2.section-title {
 }
 
 /* =========================================================================
-   „USKORO" stranica — koristi se samo dok je index.html privremeni landing.
+   „USKORO" stranica - koristi se samo dok je index.html privremeni landing.
    Kad sajt.html postane index.html, ceo ovaj blok može da se obriše.
    ========================================================================= */
 .soon {

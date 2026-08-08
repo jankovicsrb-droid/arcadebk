@@ -1,4 +1,4 @@
-# Arcade BK — statički sajt
+# Arcade BK - statički sajt
 
 Single-page sajt za klub Arcade u Banji Koviljači. Retrowave/CRT estetika sa neon paletom (cyan / magenta / yellow / deep purple).
 
@@ -11,17 +11,17 @@ Single-page sajt za klub Arcade u Banji Koviljači. Retrowave/CRT estetika sa ne
 ```
 arcadebk/
 ├── index.html       # PRIVREMENO: „Uskoro" landing (ono što domen trenutno prikazuje)
-├── sajt.html        # Pun sajt — radna verzija, noindex dok se ne završi
+├── sajt.html        # Pun sajt - radna verzija, noindex dok se ne završi
 ├── styles.css       # Svi stilovi za obe stranice
 └── assets/
     └── logo.png     # Logo kluba
 ```
 
-## Trenutno stanje — „Uskoro" landing
+## Trenutno stanje - „Uskoro" landing
 
 Domen prikazuje privremenu stranicu jer pun sajt još čeka podatke (cene za računare i volan, kapacitet za rođendane). Pun sajt živi na `/sajt.html` i može se otvoriti u browseru radi pregleda, ali nosi `noindex, nofollow` da ga Google ne pokupi u nedovršenom stanju.
 
-Landing je na istoj temi i deli isti `styles.css` — stilovi su na dnu fajla, u bloku označenom `„USKORO" stranica`.
+Landing je na istoj temi i deli isti `styles.css`: stilovi su na dnu fajla, u bloku označenom `„USKORO" stranica`.
 
 ### Kako se radi switch kad sajt bude gotov
 
@@ -36,20 +36,20 @@ Pa u novom `index.html` obriši red:
 <meta name="robots" content="noindex, nofollow">
 ```
 
-I opciono obriši `„USKORO"` blok sa dna `styles.css` — oko 60 linija koje više ništa ne stilizuju. Push na `main` i Vercel odmah objavi.
+I opciono obriši `„USKORO"` blok sa dna `styles.css`: oko 60 linija koje više ništa ne stilizuju. Push na `main` i Vercel odmah objavi.
 
-Bez build koraka, bez dependency-ja, bez JavaScript-a — otvoriš `index.html` u browseru i radi. Fontovi se učitavaju sa Google Fonts (`Audiowide`, `Chakra Petch`, `JetBrains Mono`), što je jedini eksterni zahtev.
+Bez build koraka, bez dependency-ja, bez JavaScript-a - otvoriš `index.html` u browseru i radi. Fontovi se učitavaju sa Google Fonts (`Audiowide`, `Chakra Petch`, `JetBrains Mono`), što je jedini eksterni zahtev.
 
 Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` niti build komande).
 
 ## Sekcije
 
-1. **Hero** — logo, naslov, dva CTA-a, tri stat-a
-2. **Aktivnosti** — 7 kartica (PS5, PS4, Bilijar, Stoni fudbal, Pikado, Društvene igre, Jamb)
-3. **Cenovnik** — tabelarni prikaz svih tarifa
-4. **Rođendani & zabave** — privatan i delimičan zakup
-5. **Lokacija** — adresa, radno vreme, stilizovana mapa
-6. **Kontakt** — Viber, WhatsApp, Telegram, E-mail
+1. **Hero**: logo, naslov, dva CTA-a, tri stat-a
+2. **Aktivnosti**: 7 kartica (PS5, PS4, Bilijar, Stoni fudbal, Pikado, Društvene igre, Jamb)
+3. **Cenovnik**: tabelarni prikaz svih tarifa
+4. **Rođendani & zabave**: privatan i delimičan zakup
+5. **Lokacija**: adresa, radno vreme, stilizovana mapa
+6. **Kontakt**: Viber, WhatsApp, Telegram, E-mail
 7. **Footer**
 
 ## Radno vreme
@@ -59,24 +59,24 @@ Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` n
 - sekcija Lokacija, `.addr-card` red sa `⏱` ikonicom
 - hero stat `15–00` (drugi po redu)
 
-Treći hero stat je `7/7 Dana u nedelji`. Ranije je tu stajalo `24/7 Rezervacije`, što je protivrečilo tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena") — otvoreno je 9h dnevno, ne 24h.
+Treći hero stat je `7/7 Dana u nedelji`. Ranije je tu stajalo `24/7 Rezervacije`, što je protivrečilo tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena") - otvoreno je 9h dnevno, ne 24h.
 
 ## Otvoreno
 
 Sadržaj koji treba potvrditi sa klubom:
 
 - [ ] **Kapacitet** `SAVRŠENO ZA EKIPU OD 6 - 25` na rođendanskom posteru
-- [ ] **Računari i volan** (Logitech G923) — u ponudi su, ali još nisu na sajtu; čekaju cene
+- [ ] **Računari i volan** (Logitech G923) - u ponudi su, ali još nisu na sajtu; čekaju cene
 
 Tehnički dug (ništa blokirajuće):
 
-- [ ] `assets/logo.png` je 448 KB, a prikazuje se na max 320px — vredi kompresovati
+- [ ] `assets/logo.png` je 448 KB, a prikazuje se na max 320px - vredi kompresovati
 - [ ] Mapa u sekciji Lokacija je stilizovani placeholder (`.map-frame`), ne prava mapa. Dugme „Otvori u mapi" ipak vodi na ispravan Google Maps upit.
-- [ ] Nema `robots.txt` ni `sitemap.xml` — za jednu stranicu nije neophodno, ali ne škodi
+- [ ] Nema `robots.txt` ni `sitemap.xml`: za jednu stranicu nije neophodno, ali ne škodi
 
 ## SEO / link preview
 
-Sajt više **nije** u test modu — `[TEST]` prefiks i `noindex, nofollow` su uklonjeni, Google sme da indeksira.
+Sajt više **nije** u test modu - `[TEST]` prefiks i `noindex, nofollow` su uklonjeni, Google sme da indeksira.
 
 Apsolutni URL-ovi u `<head>`-u su vezani za `https://arcadebk.rs/`:
 
@@ -84,7 +84,7 @@ Apsolutni URL-ovi u `<head>`-u su vezani za `https://arcadebk.rs/`:
 - `og:url`
 - `og:image` → `https://arcadebk.rs/assets/logo.png` (1200×1108, dimenzije deklarisane preko `og:image:width/height`)
 
-**Ako se domen ikad promeni, ova četiri mesta treba ažurirati.** Relativna `og:image` putanja ne radi — Viber, WhatsApp i Facebook zahtevaju apsolutan URL da bi prikazali preview.
+**Ako se domen ikad promeni, ova četiri mesta treba ažurirati.** Relativna `og:image` putanja ne radi - Viber, WhatsApp i Facebook zahtevaju apsolutan URL da bi prikazali preview.
 
 Logo je skoro kvadratan, pa je `twitter:card` namerno `summary`, a ne `summary_large_image` (koja očekuje 1.91:1).
 
@@ -101,9 +101,9 @@ Telefon `+381 69 403 0749` pokriva sva tri chat kanala:
 | Instagram | `https://www.instagram.com/arcade_bk/` |
 | E-mail | `mailto:vezilicn@gmail.com` |
 
-Kontakt mreža je `repeat(3, 1fr)` — šest kartica staje u dva čista reda. Ako se broj kartica menja, treba uskladiti i `.contact-grid` da ne ostanu siročići u poslednjem redu.
+Kontakt mreža je `repeat(3, 1fr)`: šest kartica staje u dva čista reda. Ako se broj kartica menja, treba uskladiti i `.contact-grid` da ne ostanu siročići u poslednjem redu.
 
-Mejl je lični, ne zvanični klupski, pa se **adresa namerno ne prikazuje** na stranici — kartica piše samo „Otvori mejl →", a `mailto:` radi normalno. Kad klub dobije zvaničnu adresu, promeni `href` i po želji prikaži je u `.handle` polju.
+Mejl je lični, ne zvanični klupski, pa se **adresa namerno ne prikazuje** na stranici - kartica piše samo „Otvori mejl →", a `mailto:` radi normalno. Kad klub dobije zvaničnu adresu, promeni `href` i po želji prikaži je u `.handle` polju.
 
 ## Paleta i tipografija
 
@@ -122,15 +122,15 @@ CSS varijable su na `:root` u `styles.css`:
 
 Fontovi:
 
-- `Audiowide` — display (h1, h2, dugmad, brendiranje)
-- `Chakra Petch` — body
-- `JetBrains Mono` — meta-tekst, kicker labele, mali UI tekst
+- `Audiowide`: display (h1, h2, dugmad, brendiranje)
+- `Chakra Petch`: body
+- `JetBrains Mono`: meta-tekst, kicker labele, mali UI tekst
 
 ## Karakteristike dizajna
 
-- **Neon backdrop** — gradijentno sunce + perspektivni grid preko cele stranice (`body::before`)
-- **CRT scanlines** — globalni overlay sa vinjetom (`body::after`, `mix-blend-mode: multiply`)
-- **Neon glow** — `text-shadow` i `filter: drop-shadow` na akcentima
+- **Neon backdrop**: gradijentno sunce + perspektivni grid preko cele stranice (`body::before`)
+- **CRT scanlines**: globalni overlay sa vinjetom (`body::after`, `mix-blend-mode: multiply`)
+- **Neon glow**: `text-shadow` i `filter: drop-shadow` na akcentima
 - **Clip-path „iseckani" uglovi** na karticama i dugmadima
 - **Sun-grid horizont** u hero sekciji (`.hero-grid`)
 
