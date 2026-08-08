@@ -12,8 +12,12 @@ Single-page sajt za klub Arcade u Banji Koviljači. Retrowave/CRT estetika sa ne
 arcadebk/
 ├── index.html       # Glavna i jedina stranica
 ├── styles.css       # Svi stilovi
+├── robots.txt       # Pravila za pretraživače i putanja do sitemap-a
+├── sitemap.xml      # Kanonski URL javne stranice
 └── assets/
-    └── logo.png     # Logo kluba
+    ├── logo.png          # Originalni logo kluba
+    ├── og-preview.jpg    # Široki preview za deljenje linka
+    └── arcadebk-qr.png   # QR kod sajta
 ```
 
 Bez build koraka, bez dependency-ja, bez JavaScript-a - otvoriš `index.html` u browseru i radi. Fontovi se učitavaju sa Google Fonts (`Audiowide`, `Chakra Petch`, `JetBrains Mono`), što je jedini eksterni zahtev.
@@ -56,9 +60,8 @@ Sadržaj koji treba potvrditi sa klubom:
 
 Tehnički dug (ništa blokirajuće):
 
-- [ ] `assets/logo.png` je 448 KB, a prikazuje se na max 320px - vredi kompresovati
+- [ ] `assets/logo.png` je 448 KB, a prikazuje se na max 460px - vredi kompresovati
 - [ ] Mapa u sekciji Lokacija je stilizovani placeholder (`.map-frame`), ne prava mapa. Dugme „Otvori u mapi" ipak vodi na ispravan Google Maps upit.
-- [ ] Nema `robots.txt` ni `sitemap.xml`: za jednu stranicu nije neophodno, ali ne škodi
 
 ## SEO / link preview
 
@@ -70,11 +73,15 @@ Apsolutni URL-ovi u `<head>`-u su vezani za `https://arcadebk.rs/`:
 
 - `<link rel="canonical">`
 - `og:url`
-- `og:image` → `https://arcadebk.rs/assets/logo.png` (1200×1108, dimenzije deklarisane preko `og:image:width/height`)
+- `og:image` → `https://arcadebk.rs/assets/og-preview.jpg` (1200×630, dimenzije deklarisane preko `og:image:width/height`)
 
 **Ako se domen ikad promeni, ova četiri mesta treba ažurirati.** Relativna `og:image` putanja ne radi - Viber, WhatsApp i Facebook zahtevaju apsolutan URL da bi prikazali preview.
 
-Logo je skoro kvadratan, pa je `twitter:card` namerno `summary`, a ne `summary_large_image` (koja očekuje 1.91:1).
+Za link preview se koristi zasebna široka retrowave slika, pa je `twitter:card` podešen na `summary_large_image`. Originalni kvadratni logo ostaje favicon i logo u hero sekciji.
+
+`robots.txt` dozvoljava pretraživačima pristup celom sajtu i navodi apsolutnu putanju do `sitemap.xml`. Sitemap sadrži samo kanonski URL `https://arcadebk.rs/`, jer je sajt single-page.
+
+U `<head>` delu je dodat JSON-LD tipa `EntertainmentBusiness`, sa javnim podacima koji se već vide na stranici: naziv, opis, adresa, telefon, radno vreme, mapa, Instagram i logo. Formalni registracioni i poreski podaci nisu deo strukturiranih podataka.
 
 ## Kontakt podaci
 
