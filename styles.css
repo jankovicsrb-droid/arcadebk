@@ -609,18 +609,18 @@ h2.section-title {
 
 /* --- 600px: mobile --- */
 @media (max-width: 600px) {
-    .topbar { padding: 12px 20px; }
+    .topbar { padding: 10px 16px; }
     .topbar .nav {
-        gap: 14px;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
         font-size: 10px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        padding-bottom: 2px;
-        flex-wrap: nowrap;
+        letter-spacing: 0.12em;
     }
-    .topbar .nav::-webkit-scrollbar { display: none; }
     .topbar .ticker { display: none; }
+
+    .section { scroll-margin-top: 88px; }
 
     .hero {
         padding: 80px 20px 48px;
@@ -676,6 +676,9 @@ h2.section-title {
     .hero-logo-wrap img { max-width: 130px; }
     .hero-stats .stat-num { font-size: 18px; }
     .hero-stats .stat-lbl { font-size: 9px; }
+
+    .topbar { padding: 9px 12px; }
+    .topbar .nav { gap: 6px 12px; font-size: 9px; letter-spacing: 0.08em; }
 }
 
 /* =========================================================================

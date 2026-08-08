@@ -150,8 +150,10 @@ Implementirana su četiri breakpointa na dnu `styles.css`:
 |---|---|
 | `≤1100px` | Manji padding sekcija, hero naslov 72px |
 | `≤900px` | Hero u jednu kolonu (logo ide iznad teksta), aktivnosti 2 kolone, `.bday` i `.map-wrap` u jednu kolonu, kontakt 2 kolone, zaglavlje cenovnika se krije |
-| `≤600px` | Sve u jednu kolonu, nav prelazi u horizontalni scroll (ticker se krije), dugmad puna širina, redovi cenovnika se prelamaju u kartice (naziv + jedinica levo, cena desno) |
-| `≤400px` | Hero naslov 36px, logo 130px, manji stat-ovi |
+| `≤600px` | Sve u jednu kolonu, nav se prelama u dva reda i centrira (ticker se krije), dugmad puna širina, redovi cenovnika se prelamaju u kartice (naziv + jedinica levo, cena desno) |
+| `≤400px` | Hero naslov 36px, logo 130px, manji stat-ovi, nav na 9px |
+
+Nav namerno **nema horizontalni scroll**. Ranije ga je imao, ali je Kontakt kao poslednja stavka ostajao van ekrana, a to je jedina stavka koja vodi ka rezervaciji. Sad se prelama u dva reda, pa su sve stavke uvek vidljive. Ako se ikad doda šesta stavka u nav, proveriti da i dalje staje u dva reda na 360px.
 
 ## Licenca / asseti
 
