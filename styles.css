@@ -296,6 +296,22 @@ h2.section-title {
     padding: 0;
     clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
 }
+.pl-group {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--yellow);
+    text-shadow: 0 0 12px rgba(255,241,77,0.45);
+    padding: 26px 32px 14px;
+    border-bottom: 1px solid rgba(255,241,77,0.25);
+}
+.pl-row + .pl-group { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 8px; }
+.pl-note {
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; line-height: 1.75;
+    color: var(--ink-dim);
+    letter-spacing: 0.03em;
+}
 .pl-header {
     display: grid; grid-template-columns: 60px 1fr 220px 200px;
     gap: 24px; padding: 18px 32px;
@@ -577,6 +593,7 @@ h2.section-title {
     .span-3, .span-4 { grid-column: span 1; }
 
     .pl-header { display: none; }
+    .pl-group { padding: 22px 24px 12px; font-size: 13px; }
     .pl-row {
         grid-template-columns: 52px 1fr 1fr auto;
         gap: 8px 12px;
@@ -632,6 +649,8 @@ h2.section-title {
     .act-card h3 { font-size: 20px; }
 
     .pl-header { display: none; }
+    .pl-group { padding: 20px 20px 10px; font-size: 12px; letter-spacing: 0.14em; }
+    .pl-note { font-size: 11px; }
     .pl-row {
         display: grid;
         grid-template-columns: 1fr auto;

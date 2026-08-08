@@ -45,8 +45,8 @@ Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` n
 ## Sekcije
 
 1. **Hero**: logo, naslov, dva CTA-a, tri stat-a
-2. **Aktivnosti**: 7 kartica (PS5, PS4, Bilijar, Stoni fudbal, Pikado, Društvene igre, Jamb)
-3. **Cenovnik**: tabelarni prikaz svih tarifa
+2. **Aktivnosti**: 9 kartica (PS5, PS4, Bilijar, Računari, Volan, Stoni fudbal, Pikado, Društvene igre, Jamb)
+3. **Cenovnik**: tarife i cene pića, u segmentima
 4. **Rođendani & zabave**: privatan i delimičan zakup
 5. **Lokacija**: adresa, radno vreme, stilizovana mapa
 6. **Kontakt**: Viber, WhatsApp, Telegram, E-mail
@@ -61,12 +61,21 @@ Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` n
 
 Treći hero stat je `7/7 Dana u nedelji`. Ranije je tu stajalo `24/7 Rezervacije`, što je protivrečilo tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena") - otvoreno je 9h dnevno, ne 24h.
 
+## Cenovnik
+
+Cenovnik je podeljen u segmente preko `.pl-group` zaglavlja unutar jednog `.pricelist` kontejnera: Igre i aktivnosti, Pivo, Bezalkoholna pića, Kafa, Alkoholna pića, Kokteli i mikseri.
+
+Dodavanje novog segmenta je jedan `<div class="pl-group">// NAZIV</div>` pa `.pl-row` redovi ispod njega. `.pl-header` (zaglavlje kolona) se stavlja samo tamo gde se značenje kolona menja, trenutno dva puta: na igrama i na prvoj grupi pića.
+
+Sve cene igara su **po satu**, a navedeno vreme je **minimum zakupa** (30 min, stoni fudbal 15 min). Pikado je jedini izuzetak, plaća se po kreditu. To piše u `.pl-note` ispod tabele.
+
 ## Otvoreno
 
 Sadržaj koji treba potvrditi sa klubom:
 
 - [ ] **Kapacitet** `SAVRŠENO ZA EKIPU OD 6 - 25` na rođendanskom posteru
-- [ ] **Računari i volan** (Logitech G923) - u ponudi su, ali još nisu na sajtu; čekaju cene
+- [ ] **Pomorandža i breskva** (200 din) su unete pod tim imenima kako ih je vlasnik naveo; ako su sokovi, vredi precizirati naziv
+- [ ] **Zapremine pića** su poznate samo za Zaječarsko (0,33); ostala piva i sokovi nemaju navedenu količinu
 
 Tehnički dug (ništa blokirajuće):
 
