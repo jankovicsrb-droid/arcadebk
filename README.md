@@ -67,7 +67,7 @@ Cenovnik je podeljen u segmente preko `.pl-group` zaglavlja unutar jednog `.pric
 
 Dodavanje novog segmenta je jedan `<div class="pl-group">// NAZIV</div>` pa `.pl-row` redovi ispod njega. `.pl-header` (zaglavlje kolona) se stavlja samo tamo gde se značenje kolona menja, trenutno dva puta: na igrama i na prvoj grupi pića.
 
-Sve cene igara su **po satu**, a navedeno vreme je **minimum zakupa** (30 min, stoni fudbal 15 min). Pikado je jedini izuzetak, plaća se po kreditu. To piše u `.pl-note` ispod tabele.
+Cene igara su **po satu**, a minimum zakupa je 30 minuta. Dva izuzetka: stoni fudbal se naplaćuje po 15 minuta, pikado po kreditu. To piše u `.pl-note` ispod tabele.
 
 ## Otvoreno
 
