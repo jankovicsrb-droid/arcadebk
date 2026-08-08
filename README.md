@@ -10,33 +10,11 @@ Single-page sajt za klub Arcade u Banji Koviljači. Retrowave/CRT estetika sa ne
 
 ```
 arcadebk/
-├── index.html       # PRIVREMENO: „Uskoro" landing (ono što domen trenutno prikazuje)
-├── sajt.html        # Pun sajt - radna verzija, noindex dok se ne završi
-├── styles.css       # Svi stilovi za obe stranice
+├── index.html       # Glavna i jedina stranica
+├── styles.css       # Svi stilovi
 └── assets/
     └── logo.png     # Logo kluba
 ```
-
-## Trenutno stanje - „Uskoro" landing
-
-Domen prikazuje privremenu stranicu jer pun sajt još čeka podatke (cene za računare i volan, kapacitet za rođendane). Pun sajt živi na `/sajt.html` i može se otvoriti u browseru radi pregleda, ali nosi `noindex, nofollow` da ga Google ne pokupi u nedovršenom stanju.
-
-Landing je na istoj temi i deli isti `styles.css`: stilovi su na dnu fajla, u bloku označenom `„USKORO" stranica`.
-
-### Kako se radi switch kad sajt bude gotov
-
-```bash
-git rm index.html          # baci privremeni landing
-git mv sajt.html index.html
-```
-
-Pa u novom `index.html` obriši red:
-
-```html
-<meta name="robots" content="noindex, nofollow">
-```
-
-I opciono obriši `„USKORO"` blok sa dna `styles.css`: oko 60 linija koje više ništa ne stilizuju. Push na `main` i Vercel odmah objavi.
 
 Bez build koraka, bez dependency-ja, bez JavaScript-a - otvoriš `index.html` u browseru i radi. Fontovi se učitavaju sa Google Fonts (`Audiowide`, `Chakra Petch`, `JetBrains Mono`), što je jedini eksterni zahtev.
 
@@ -84,7 +62,9 @@ Tehnički dug (ništa blokirajuće):
 
 ## SEO / link preview
 
-Sajt više **nije** u test modu - `[TEST]` prefiks i `noindex, nofollow` su uklonjeni, Google sme da indeksira.
+Sajt je javan i indeksabilan. Nema `noindex` ni `[TEST]` prefiksa nigde.
+
+Do 8.8.2026. je na `/` stajala privremena „Uskoro" stranica dok se čekale cene, a pun sajt je živeo na `/sajt.html` sa `noindex`. Oba su spojena u jedan `index.html`. Ako ikad zatreba, ta landing stranica i njeni stilovi stoje u git istoriji, u commitu pre onog koji ih je zamenio.
 
 Apsolutni URL-ovi u `<head>`-u su vezani za `https://arcadebk.rs/`:
 
