@@ -43,8 +43,8 @@ Treći hero stat je `7/7 Dana u nedelji`. Ranije je tu stajalo `24/7 Rezervacije
 
 Sadržaj koji treba potvrditi sa klubom:
 
-- [ ] **Koordinate** `44.302N · 19.297E` u uglu mape — dekorativne, nisu izmerene
 - [ ] **Kapacitet** `SAVRŠENO ZA EKIPU OD 6 - 25` na rođendanskom posteru
+- [ ] **Računari i volan** (Logitech G923) — u ponudi su, ali još nisu na sajtu; čekaju cene
 
 Tehnički dug (ništa blokirajuće):
 
