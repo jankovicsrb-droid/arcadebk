@@ -3,7 +3,6 @@
 Single-page sajt za klub Arcade u Banji Koviljači. Retrowave/CRT estetika sa neon paletom (cyan / magenta / yellow / deep purple).
 
 - **Domen:** https://arcadebk.rs
-- **Vercel:** https://arcade-bk.vercel.app/
 - **Repo:** https://github.com/jankovicsrb-droid/arcadebk
 
 ## Struktura
