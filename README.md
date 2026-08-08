@@ -75,7 +75,7 @@ Sadržaj koji treba potvrditi sa klubom:
 
 - [ ] **Kapacitet** `SAVRŠENO ZA EKIPU OD 6 - 25` na rođendanskom posteru
 - [ ] **Pomorandža i breskva** (200 din) su unete pod tim imenima kako ih je vlasnik naveo; ako su sokovi, vredi precizirati naziv
-- [ ] **Zapremine pića** su poznate samo za Zaječarsko (0,33); ostala piva i sokovi nemaju navedenu količinu
+- [ ] **Zapremine** su poznate samo za piva (sva su 0,33 l); sokovi i ostala pića nemaju navedenu količinu, pa im u koloni „Jedinica" stoji `din / kom`
 
 Tehnički dug (ništa blokirajuće):
 
