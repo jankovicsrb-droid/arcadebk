@@ -23,8 +23,8 @@ Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` n
 ## Sekcije
 
 1. **Hero**: logo, naslov, dva CTA-a, tri stat-a
-2. **Aktivnosti**: 9 kartica (PS5, PS4, Bilijar, Računari, Volan, Stoni fudbal, Pikado, Društvene igre, Jamb)
-3. **Cenovnik**: tarife i cene pića, u segmentima
+2. **Aktivnosti**: 8 kartica (PS5, Bilijar, Računari, Volan, Stoni fudbal, Pikado, Društvene igre, Jamb)
+3. **Cenovnik**: cene pića, u segmentima
 4. **Rođendani & zabave**: privatan i delimičan zakup
 5. **Lokacija**: adresa, radno vreme, stilizovana mapa
 6. **Kontakt**: Viber, WhatsApp, Telegram, E-mail
@@ -41,11 +41,11 @@ Treći hero stat je `7/7 Dana u nedelji`. Ranije je tu stajalo `24/7 Rezervacije
 
 ## Cenovnik
 
-Cenovnik je podeljen u segmente preko `.pl-group` zaglavlja unutar jednog `.pricelist` kontejnera: Igre i aktivnosti, Pivo, Bezalkoholna pića, Kafa, Alkoholna pića, Kokteli i mikseri.
+Cenovnik je podeljen u segmente preko `.pl-group` zaglavlja unutar jednog `.pricelist` kontejnera: Pivo, Bezalkoholna pića, Kafa, Alkoholna pića, Kokteli i mikseri. Cene igara prikazane su samo u sekciji Aktivnosti, da se sadržaj ne duplira.
 
-Dodavanje novog segmenta je jedan `<div class="pl-group">// NAZIV</div>` pa `.pl-row` redovi ispod njega. `.pl-header` (zaglavlje kolona) se stavlja samo tamo gde se značenje kolona menja, trenutno dva puta: na igrama i na prvoj grupi pića.
+Dodavanje novog segmenta je jedan `<div class="pl-group">// NAZIV</div>` pa `.pl-row` redovi ispod njega. `.pl-header` (zaglavlje kolona) trenutno se nalazi samo na prvoj grupi pića.
 
-Cene igara su **po satu**, a minimum zakupa je 30 minuta. Dva izuzetka: stoni fudbal se naplaćuje po 15 minuta, pikado po kreditu. Oba izuzetka se vide iz kolone „Jedinica", a minimum zakupa stoji u `.section-tag` sekcije Aktivnosti.
+Cene igara su prikazane na karticama u sekciji Aktivnosti. Minimum zakupa je 30 minuta; stoni fudbal se naplaćuje po 15 minuta, a pikado po kreditu. PS5 košta 300 din/sat sa 2 džojstika, odnosno 400 din/sat sa 4 džojstika.
 
 ## Otvoreno
 

@@ -272,6 +272,14 @@ h2.section-title {
     display: flex; align-items: baseline; gap: 6px;
 }
 .act-card .price .cur { font-size: 11px; opacity: 0.7; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
+.act-card .price-options { display: block; }
+.act-card .price-options > div {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    align-items: baseline;
+    gap: 6px;
+}
+.act-card .price-options .alt { margin-top: 4px; font-size: 14px; opacity: 0.82; }
 .act-card.cyan .price { color: var(--cyan); text-shadow: 0 0 10px rgba(34,225,255,0.6); }
 .act-card.magenta .price { color: var(--magenta); text-shadow: 0 0 10px rgba(255,61,240,0.6); }
 .act-card.yellow .price { color: var(--yellow); text-shadow: 0 0 10px rgba(255,241,77,0.6); }
