@@ -481,7 +481,7 @@ h2.section-title {
 
 /* ----- Contact ----- */
 .contact-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
 }
 .ct-card {
     position: relative;
@@ -514,6 +514,10 @@ h2.section-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
 }
+.ct-card.tel { color: var(--yellow); box-shadow: inset 0 0 30px rgba(255,241,77,0.14), 0 0 0 1px rgba(255,241,77,0.3); }
+.ct-card.tel .ico { font-size: 22px; }
+.ct-card.ig { color: #ff8a3d; box-shadow: inset 0 0 30px rgba(255,138,61,0.16), 0 0 0 1px rgba(255,138,61,0.3); }
+.ct-card.ig .ico { font-size: 20px; letter-spacing: 0.05em; }
 .ct-card.viber { color: #b78bff; box-shadow: inset 0 0 30px rgba(143,90,255,0.18), 0 0 0 1px rgba(143,90,255,0.3); }
 .ct-card.wapp { color: #5ef0a3; box-shadow: inset 0 0 30px rgba(34,225,128,0.16), 0 0 0 1px rgba(34,225,128,0.3); }
 .ct-card.tg { color: var(--cyan); box-shadow: inset 0 0 30px rgba(34,225,255,0.16), 0 0 0 1px rgba(34,225,255,0.3); }

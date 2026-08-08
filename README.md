@@ -72,10 +72,14 @@ Telefon `+381 69 403 0749` pokriva sva tri chat kanala:
 
 | Kanal | Link |
 |---|---|
+| Telefon | `tel:+381694030749` |
 | Viber | `viber://chat?number=%2B381694030749` |
 | WhatsApp | `https://wa.me/381694030749` |
 | Telegram | `https://t.me/+381694030749` |
+| Instagram | `https://www.instagram.com/arcade_bk/` |
 | E-mail | `mailto:vezilicn@gmail.com` |
+
+Kontakt mreža je `repeat(3, 1fr)` — šest kartica staje u dva čista reda. Ako se broj kartica menja, treba uskladiti i `.contact-grid` da ne ostanu siročići u poslednjem redu.
 
 Mejl je lični, ne zvanični klupski, pa se **adresa namerno ne prikazuje** na stranici — kartica piše samo „Otvori mejl →", a `mailto:` radi normalno. Kad klub dobije zvaničnu adresu, promeni `href` i po želji prikaži je u `.handle` polju.
 
