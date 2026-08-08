@@ -305,13 +305,6 @@ h2.section-title {
     border-bottom: 1px solid rgba(255,241,77,0.25);
 }
 .pl-row + .pl-group { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 8px; }
-.pl-note {
-    margin-top: 20px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; line-height: 1.75;
-    color: var(--ink-dim);
-    letter-spacing: 0.03em;
-}
 .pl-header {
     display: grid; grid-template-columns: 60px 1fr 220px 200px;
     gap: 24px; padding: 18px 32px;
@@ -650,7 +643,6 @@ h2.section-title {
 
     .pl-header { display: none; }
     .pl-group { padding: 20px 20px 10px; font-size: 12px; letter-spacing: 0.14em; }
-    .pl-note { font-size: 11px; }
     .pl-row {
         display: grid;
         grid-template-columns: 1fr auto;
