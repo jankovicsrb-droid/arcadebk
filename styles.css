@@ -243,7 +243,7 @@ h2.section-title {
     border: 2px solid;
     padding: 28px 24px 24px;
     background: rgba(10,0,20,0.65);
-    min-height: 220px;
+    min-height: 150px;
     display: flex; flex-direction: column; justify-content: space-between;
     clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
     transition: transform 0.2s, box-shadow 0.2s;
@@ -262,12 +262,8 @@ h2.section-title {
 .act-card.yellow .badge { color: var(--yellow); }
 .act-card h3 {
     font-family: 'Audiowide', sans-serif;
-    font-size: 24px; margin: 0 0 8px;
+    font-size: 24px; margin: 0;
     letter-spacing: 0.03em;
-}
-.act-card p {
-    font-size: 14px; color: var(--ink-dim);
-    margin: 0; line-height: 1.5;
 }
 .act-card .price {
     margin-top: 18px;
@@ -628,7 +624,7 @@ h2.section-title {
     h2.section-title { font-size: 32px; }
 
     .activities { grid-template-columns: 1fr; gap: 12px; }
-    .act-card { min-height: 160px; }
+    .act-card { min-height: 118px; }
     .act-card h3 { font-size: 20px; }
 
     .pl-header { display: none; }
