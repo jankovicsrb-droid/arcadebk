@@ -2,7 +2,8 @@
 
 Single-page sajt za klub Arcade u Banji Koviljači. Retrowave/CRT estetika sa neon paletom (cyan / magenta / yellow / deep purple).
 
-- **Live:** https://arcade-bk.vercel.app/ *(trenutno u test modu — vidi „Pre objave")*
+- **Domen:** https://arcadebk.rs
+- **Vercel:** https://arcade-bk.vercel.app/
 - **Repo:** https://github.com/jankovicsrb-droid/arcadebk
 
 ## Struktura
@@ -29,25 +30,41 @@ Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` n
 6. **Kontakt** — Viber, WhatsApp, Telegram, E-mail
 7. **Footer**
 
-## Pre objave
+## Radno vreme
 
-Sajt je namerno u **test modu** — dve stvari koje moraju da se skinu kad sadržaj bude finalan:
+**Svakog dana 15:00 – 00:00.** Pojavljuje se na dva mesta u `index.html`:
 
-- [ ] `[TEST]` prefiks u `<title>` (`index.html`, linija 5)
-- [ ] `<meta name="robots" content="noindex, nofollow">` (`index.html`, linija 7) — dok ovo stoji, sajt se ne indeksira
+- sekcija Lokacija, `.addr-card` red sa `⏱` ikonicom
+- hero stat `15–00` (drugi po redu)
 
-Podaci koje treba potvrditi sa klubom:
+Treći hero stat je `7/7 Dana u nedelji`. Ranije je tu stajalo `24/7 Rezervacije`, što je protivrečilo tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena") — otvoreno je 9h dnevno, ne 24h.
 
-- [ ] **Radno vreme** — trenutno `Pon–Pet 16:00–02:00 / Sub–Ned 14:00–04:00` (sekcija Lokacija)
+## Otvoreno
+
+Sadržaj koji treba potvrditi sa klubom:
+
 - [ ] **Koordinate** `44.302N · 19.297E` u uglu mape — dekorativne, nisu izmerene
 - [ ] **Kapacitet** `SAVRŠENO ZA EKIPU OD 6 - 25` na rođendanskom posteru
-- [ ] **Hero stat** `12h+` radno vreme i `24/7` rezervacije — `24/7` protivreči tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena")
 
 Tehnički dug (ništa blokirajuće):
 
-- [ ] `og:image` je relativna putanja — za link preview na društvenim mrežama treba apsolutni URL
 - [ ] `assets/logo.png` je 448 KB, a prikazuje se na max 320px — vredi kompresovati
 - [ ] Mapa u sekciji Lokacija je stilizovani placeholder (`.map-frame`), ne prava mapa. Dugme „Otvori u mapi" ipak vodi na ispravan Google Maps upit.
+- [ ] Nema `robots.txt` ni `sitemap.xml` — za jednu stranicu nije neophodno, ali ne škodi
+
+## SEO / link preview
+
+Sajt više **nije** u test modu — `[TEST]` prefiks i `noindex, nofollow` su uklonjeni, Google sme da indeksira.
+
+Apsolutni URL-ovi u `<head>`-u su vezani za `https://arcadebk.rs/`:
+
+- `<link rel="canonical">`
+- `og:url`
+- `og:image` → `https://arcadebk.rs/assets/logo.png` (1200×1108, dimenzije deklarisane preko `og:image:width/height`)
+
+**Ako se domen ikad promeni, ova četiri mesta treba ažurirati.** Relativna `og:image` putanja ne radi — Viber, WhatsApp i Facebook zahtevaju apsolutan URL da bi prikazali preview.
+
+Logo je skoro kvadratan, pa je `twitter:card` namerno `summary`, a ne `summary_large_image` (koja očekuje 1.91:1).
 
 ## Kontakt podaci
 
