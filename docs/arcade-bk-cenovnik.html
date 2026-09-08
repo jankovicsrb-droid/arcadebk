@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arcade BK - Cenovnik</title>
+  <style>
+    :root {
+      --ink: #ffffff;
+      --muted: #d7cde0;
+      --line: rgba(255,255,255,.18);
+      --panel: rgba(8,0,16,.78);
+      --panel-strong: rgba(8,0,16,.9);
+      --purple: #b73dff;
+      --purple-dark: #2c0b49;
+      --cyan: #25dfff;
+      --magenta: #ff32c5;
+      --yellow: #ffe600;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #d8d4dc;
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @page { size: A4 portrait; margin: 0; }
+
+    .sheet {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto 8mm;
+      overflow: hidden;
+      isolation: isolate;
+      background: #050008 url("../assets/menu-background.png") center center / cover no-repeat;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .sheet::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.24), rgba(6,0,13,.42) 42%, rgba(5,0,12,.67)),
+        radial-gradient(circle at 50% 40%, transparent 0, rgba(0,0,0,.14) 66%, rgba(0,0,0,.42) 100%);
+    }
+
+    .sheet:last-child { page-break-after: auto; break-after: auto; }
+
+    .hero {
+      position: relative;
+      height: 40mm;
+      overflow: hidden;
+      border-bottom: .3mm solid rgba(73,233,255,.42);
+      background: linear-gradient(180deg, rgba(4,0,10,.86), rgba(7,0,15,.48));
+      box-shadow: 0 2mm 8mm rgba(0,0,0,.26);
+    }
+
+    .hero-copy {
+      position: absolute;
+      z-index: 1;
+      left: 42mm;
+      top: 9mm;
+      color: white;
+    }
+
+    .brand-logo {
+      position: absolute;
+      z-index: 2;
+      left: 10mm;
+      top: 6mm;
+      width: 27mm;
+      height: 27mm;
+      object-fit: cover;
+      border: .35mm solid rgba(73,233,255,.7);
+      border-radius: 3mm;
+      box-shadow: 0 0 5mm rgba(216,27,156,.48);
+    }
+
+    .kicker {
+      margin: 0 0 1.7mm;
+      color: #49e9ff;
+      font-size: 7.8pt;
+      font-weight: 800;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 22pt;
+      line-height: .98;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px rgba(216,27,156,.8);
+    }
+
+    .hero-sub {
+      margin-top: 1.7mm;
+      color: #f5eefe;
+      font-size: 8.5pt;
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+
+    .content { padding: 7mm 10mm 16mm; }
+
+    .section-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8mm;
+      margin-bottom: 4.5mm;
+      border-bottom: .45mm solid var(--cyan);
+      padding: 0 1mm 2.5mm;
+    }
+
+    .section-line h2 {
+      margin: 0;
+      color: white;
+      font-size: 17pt;
+      line-height: 1;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .section-line p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 8.5pt;
+      font-weight: 650;
+      text-align: right;
+    }
+
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4mm;
+    }
+
+    .activity {
+      position: relative;
+      min-height: 38mm;
+      padding: 5mm 5.5mm 4.5mm;
+      border: .35mm solid var(--line);
+      border-left-width: 1.8mm;
+      border-radius: 2mm;
+      background: var(--panel);
+      box-shadow: 0 1.5mm 5mm rgba(0,0,0,.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      break-inside: avoid;
+    }
+
+    .activity.cyan { border-left-color: var(--cyan); background: linear-gradient(120deg, rgba(0,169,201,.28), var(--panel) 52%); }
+    .activity.magenta { border-left-color: var(--magenta); background: linear-gradient(120deg, rgba(216,27,156,.28), var(--panel) 52%); }
+    .activity.yellow { border-left-color: var(--yellow); background: linear-gradient(120deg, rgba(226,184,0,.22), var(--panel) 52%); }
+
+    .activity .tag {
+      margin-bottom: 2mm;
+      color: var(--muted);
+      font-size: 7.4pt;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .activity h3 {
+      margin: 0;
+      color: white;
+      font-size: 16pt;
+      line-height: 1.06;
+    }
+
+    .activity .price {
+      display: flex;
+      align-items: baseline;
+      gap: 2mm;
+      margin-top: 4mm;
+      color: white;
+      font-weight: 850;
+    }
+
+    .activity .amount { font-size: 21pt; line-height: .9; }
+    .activity .unit { color: var(--muted); font-size: 8.5pt; font-weight: 750; }
+
+    .activity .price.dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+      align-items: end;
+    }
+
+    .activity .price.dual > span { display: flex; flex-direction: column; }
+    .activity .price.dual .amount { font-size: 18pt; }
+    .activity .price.dual .unit { margin-top: 1mm; font-size: 7.7pt; }
+
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 7mm;
+      align-items: start;
+    }
+
+    .menu-group {
+      margin-bottom: 5mm;
+      break-inside: avoid;
+    }
+
+    .menu-group h3 {
+      margin: 0 0 1.5mm;
+      padding: 2.4mm 3mm;
+      border-radius: 1.4mm;
+      color: white;
+      border: .25mm solid rgba(73,233,255,.35);
+      background: linear-gradient(90deg, rgba(108,33,168,.94), rgba(44,11,73,.92));
+      font-size: 10.5pt;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .menu-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4mm;
+      align-items: center;
+      min-height: 8.7mm;
+      padding: 1.4mm 2.4mm;
+      border-bottom: .25mm solid var(--line);
+      background: rgba(8,0,16,.78);
+    }
+
+    .menu-row:nth-child(odd) { background: rgba(74,12,104,.7); }
+
+    .item { min-width: 0; }
+    .item strong { display: block; font-size: 9.4pt; line-height: 1.12; }
+    .item small { color: var(--muted); font-size: 7.3pt; font-weight: 600; }
+    .menu-price { white-space: nowrap; color: #ffffff; font-size: 12pt; font-weight: 850; }
+    .menu-price small { color: var(--muted); font-size: 6.8pt; font-weight: 750; }
+
+    .footer {
+      position: absolute;
+      left: 12mm;
+      right: 12mm;
+      bottom: 5mm;
+      min-height: 8mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4mm;
+      border-top: .35mm solid rgba(73,233,255,.42);
+      padding-top: 2.2mm;
+      color: var(--muted);
+      font-size: 7.7pt;
+      font-weight: 650;
+    }
+
+    .footer strong { color: white; }
+    .footer .contact { text-align: right; }
+
+    .qr-wrap {
+      position: absolute;
+      z-index: 2;
+      right: 10mm;
+      top: 8mm;
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      padding: 2.2mm;
+      border-radius: 2mm;
+      border: .3mm solid rgba(255,255,255,.75);
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 1.5mm 6mm rgba(0,0,0,.22);
+    }
+
+    .qr-wrap img { width: 18mm; height: 18mm; display: block; }
+
+    .note {
+      margin-top: 4mm;
+      padding: 3.2mm 4mm;
+      border: .35mm solid rgba(183,61,255,.55);
+      border-radius: 1.5mm;
+      color: #f4eafa;
+      background: rgba(44,11,73,.82);
+      font-size: 8pt;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    @media print {
+      html, body { background: transparent; }
+      .sheet { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <section class="sheet">
+    <header class="hero">
+      <img class="brand-logo" src="../assets/logo.png" alt="Arcade BK logo">
+      <div class="hero-copy">
+        <p class="kicker">Klub i igraonica · Banja Koviljača</p>
+        <h1>Aktivnosti</h1>
+        <div class="hero-sub">Igraj. Druži se. Vrati se po revanš.</div>
+      </div>
+      <div class="qr-wrap">
+        <img src="../assets/arcadebk-qr.png" alt="QR kod za arcadebk.rs">
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="section-line">
+        <h2>Cenovnik igre</h2>
+        <p>Minimum zakupa: 30 minuta</p>
+      </div>
+
+      <div class="activities">
+        <article class="activity cyan">
+          <div><div class="tag">01 · Console</div><h3>PlayStation 5</h3></div>
+          <div class="price dual">
+            <span><b class="amount">300</b><b class="unit">RSD / sat · 2 džojstika</b></span>
+            <span><b class="amount">400</b><b class="unit">RSD / sat · 4 džojstika</b></span>
+          </div>
+        </article>
+
+        <article class="activity yellow">
+          <div><div class="tag">02 · Cue sport</div><h3>Bilijar</h3></div>
+          <div class="price"><span class="amount">500</span><span class="unit">RSD / sat</span></div>
+        </article>
+
+        <article class="activity cyan">
+          <div><div class="tag">03 · PC</div><h3>Računari</h3></div>
+          <div class="price"><span class="amount">250</span><span class="unit">RSD / sat</span></div>
+        </article>
+
+        <article class="activity magenta">
+          <div><div class="tag">04 · Racing sim</div><h3>Volan</h3></div>
+          <div class="price"><span class="amount">500</span><span class="unit">RSD / sat</span></div>
+        </article>
+
+        <article class="activity yellow">
+          <div><div class="tag">05 · Foosball</div><h3>Stoni fudbal</h3></div>
+          <div class="price"><span class="amount">100</span><span class="unit">RSD / 15 min</span></div>
+        </article>
+
+        <article class="activity cyan">
+          <div><div class="tag">06 · Darts</div><h3>Pikado</h3></div>
+          <div class="price"><span class="amount">30</span><span class="unit">RSD / kredit</span></div>
+        </article>
+
+        <article class="activity magenta">
+          <div><div class="tag">07 · Board</div><h3>Društvene igre</h3></div>
+          <div class="price"><span class="amount">GRATIS</span><span class="unit">uz piće</span></div>
+        </article>
+
+        <article class="activity yellow">
+          <div><div class="tag">08 · Dice</div><h3>Jamb</h3></div>
+          <div class="price"><span class="amount">GRATIS</span><span class="unit">uz piće</span></div>
+        </article>
+      </div>
+
+      <div class="note">Privatan zakup celog kluba ili odabranih aktivnosti dostupan je po dogovoru.</div>
+    </main>
+
+    <footer class="footer">
+      <span><strong>Arcade BK</strong> · Maršala Tita 120 · Banja Koviljača · svakog dana 15:00–00:00</span>
+      <span class="contact">+381 69 403 0749 · @arcade_bk</span>
+    </footer>
+  </section>
+
+  <section class="sheet">
+    <header class="hero">
+      <img class="brand-logo" src="../assets/logo.png" alt="Arcade BK logo">
+      <div class="hero-copy">
+        <p class="kicker">Klub i igraonica · Banja Koviljača</p>
+        <h1>Piće</h1>
+        <div class="hero-sub">Osveženje između dve partije.</div>
+      </div>
+      <div class="qr-wrap">
+        <img src="../assets/arcadebk-qr.png" alt="QR kod za arcadebk.rs">
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="section-line">
+        <h2>Cenovnik pića</h2>
+        <p>Sve cene su iskazane u RSD</p>
+      </div>
+
+      <div class="drinks-grid">
+        <div>
+          <section class="menu-group">
+            <h3>Pivo</h3>
+            <div class="menu-row"><span class="item"><strong>Zaječarsko</strong><small>0,33 l</small></span><span class="menu-price">200 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Valjevsko</strong><small>0,33 l</small></span><span class="menu-price">200 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Tuborg</strong><small>0,33 l</small></span><span class="menu-price">230 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Lav Premium</strong><small>0,33 l</small></span><span class="menu-price">230 <small>RSD</small></span></div>
+          </section>
+
+          <section class="menu-group">
+            <h3>Bezalkoholna pića</h3>
+            <div class="menu-row"><span class="item"><strong>Coca-Cola</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Coca-Cola Zero</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Fanta</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Schweppes Bitter Lemon</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Kisela voda</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Guarana</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Sola Ice Tea</strong></span><span class="menu-price">180 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Multi Sola</strong></span><span class="menu-price">180 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Sok od pomorandže</strong></span><span class="menu-price">200 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Sok od breskve</strong></span><span class="menu-price">200 <small>RSD</small></span></div>
+          </section>
+        </div>
+
+        <div>
+          <section class="menu-group">
+            <h3>Kafa</h3>
+            <div class="menu-row"><span class="item"><strong>Espreso</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Espreso sa mlekom</strong></span><span class="menu-price">180 <small>RSD</small></span></div>
+          </section>
+
+          <section class="menu-group">
+            <h3>Alkoholna pića</h3>
+            <div class="menu-row"><span class="item"><strong>Belo vino</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Votka</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Tekila</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Pelinkovac</strong></span><span class="menu-price">150 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Jameson</strong></span><span class="menu-price">250 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Vinjak 5</strong></span><span class="menu-price">250 <small>RSD</small></span></div>
+          </section>
+
+          <section class="menu-group">
+            <h3>Kokteli i mikseri</h3>
+            <div class="menu-row"><span class="item"><strong>Džin tonik</strong></span><span class="menu-price">250 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Whiskey Sour</strong></span><span class="menu-price">300 <small>RSD</small></span></div>
+            <div class="menu-row"><span class="item"><strong>Aperol Spritzer</strong></span><span class="menu-price">300 <small>RSD</small></span></div>
+          </section>
+
+          <div class="note">Društvene igre i jamb su gratis uz piće. Za rezervacije pozovite ili pošaljite poruku.</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span><strong>Arcade BK</strong> · Maršala Tita 120 · Banja Koviljača · svakog dana 15:00–00:00</span>
+      <span class="contact">+381 69 403 0749 · @arcade_bk</span>
+    </footer>
+  </section>
+</body>
+</html>
