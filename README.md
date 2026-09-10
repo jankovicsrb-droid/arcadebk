@@ -35,12 +35,13 @@ Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` n
 
 ## Radno vreme
 
-**Svakog dana 15:00 – 00:00.** Pojavljuje se na dva mesta u `index.html`:
+**Radnim danima (pon – pet) 12:00 – 00:00, vikendom (sub – ned) 15:00 – 00:00.** Pojavljuje se na tri mesta u `index.html`:
 
 - sekcija Lokacija, `.addr-card` red sa `⏱` ikonicom
-- hero stat `15–00` (drugi po redu)
+- hero statovi `12–00 Radnim danima` i `15–00 Vikendom` (drugi i treći po redu)
+- JSON-LD u `<head>`, dva `openingHoursSpecification` unosa
 
-Treći hero stat je `7/7 Dana u nedelji`. Ranije je tu stajalo `24/7 Rezervacije`, što je protivrečilo tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena") - otvoreno je 9h dnevno, ne 24h.
+Hero ima tačno tri stata, jer je `.hero-stats` grid sa 3 kolone - četvrti pada u novi red. Ranije je treći bio `24/7 Rezervacije`, što je protivrečilo tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena"), a zatim `7/7 Dana u nedelji`, koji je izbačen kad je uvedeno posebno vikend radno vreme, jer se iz njega već vidi da se radi svaki dan.
 
 ## Cenovnik
 

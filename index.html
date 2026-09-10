@@ -36,20 +36,29 @@
             "addressLocality": "Banja Koviljača",
             "addressCountry": "RS"
         },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            ],
-            "opens": "15:00",
-            "closes": "00:00"
-        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "opens": "12:00",
+                "closes": "00:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Saturday",
+                    "Sunday"
+                ],
+                "opens": "15:00",
+                "closes": "00:00"
+            }
+        ],
         "hasMap": "https://maps.google.com/?q=Maršala+Tita+120,+Banja+Koviljača,+Srbija",
         "sameAs": [
             "https://www.instagram.com/arcade_bk/"
@@ -98,15 +107,11 @@
             </div>
             <div>
                 <div class="stat-num">12–00</div>
-                <div class="stat-lbl">Radno vreme</div>
+                <div class="stat-lbl">Radnim danima</div>
             </div>
             <div>
                 <div class="stat-num">15–00</div>
                 <div class="stat-lbl">Vikendom</div>
-            </div>
-            <div>
-                <div class="stat-num">7/7</div>
-                <div class="stat-lbl">Dana u nedelji</div>
             </div>
         </div>
     </div>
@@ -446,7 +451,7 @@
             </div>
             <div class="row">
                 <span class="ico">⏱</span>
-                <span>Svakog dana<br>15:00 – 00:00</span>
+                <span>Pon – Pet: 12:00 – 00:00<br>Sub – Ned: 15:00 – 00:00</span>
             </div>
             <a class="btn btn-ghost" href="https://maps.google.com/?q=Maršala+Tita+120,+Banja+Koviljača,+Srbija" target="_blank" rel="noopener noreferrer" style="margin-top: 12px; align-self: flex-start;">Otvori u mapi →</a>
         </div>
