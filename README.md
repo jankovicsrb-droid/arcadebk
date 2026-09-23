@@ -51,14 +51,7 @@ Dodavanje novog segmenta je jedan `<div class="pl-group">// NAZIV</div>` pa `.pl
 
 Cene igara su prikazane na karticama u sekciji Aktivnosti. Minimum zakupa je 30 minuta; stoni fudbal se naplaćuje po 15 minuta, a pikado po kreditu. PS5 košta 300 din/sat sa 2 džojstika, odnosno 400 din/sat sa 4 džojstika.
 
-## Otvoreno
-
-Sadržaj koji treba potvrditi sa klubom:
-
-- [ ] **Pomorandža i breskva** (200 din) su unete pod tim imenima kako ih je vlasnik naveo; ako su sokovi, vredi precizirati naziv
-- [ ] **Zapremine** su poznate samo za piva (sva su 0,33 l); sokovi i ostala pića nemaju navedenu količinu, pa im u koloni „Jedinica" stoji `din / kom`
-
-Tehnički dug (ništa blokirajuće):
+## Poznata ograničenja
 
 - [ ] `assets/logo.png` je 448 KB, a prikazuje se na max 460px - vredi kompresovati
 - [ ] Mapa u sekciji Lokacija je stilizovani placeholder (`.map-frame`), ne prava mapa. Dugme „Otvori u mapi" ipak vodi na ispravan Google Maps upit.
@@ -97,8 +90,6 @@ Telefon `+381 69 403 0749` pokriva sva tri chat kanala:
 | TikTok | `https://www.tiktok.com/@arcade_bk` |
 
 Kontakt mreža je `repeat(3, 1fr)`: šest kartica staje u dva čista reda. Ako se broj kartica menja, treba uskladiti i `.contact-grid` da ne ostanu siročići u poslednjem redu.
-
-Mejl je izbačen na zahtev vlasnika - adresa je bila lična, ne zvanična klupska - i zamenjen je TikTok karticom, pa mreža i dalje ima šest kartica. Stil `.ct-card.mail` je uklonjen iz `styles.css`; ako klub jednom dobije zvaničnu adresu, kartica se vraća po istom obrascu.
 
 ## Paleta i tipografija
 
