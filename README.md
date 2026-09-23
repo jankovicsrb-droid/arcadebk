@@ -25,23 +25,23 @@ Deploy je statički (Vercel servira root folder kako jeste, nema `vercel.json` n
 
 ## Sekcije
 
-1. **Hero**: logo, naslov, dva CTA-a, tri stat-a
+1. **Hero**: logo, naslov, dva CTA-a, dva stat-a
 2. **Aktivnosti**: 8 kartica (PS5, Bilijar, Računari, Volan, Stoni fudbal, Pikado, Društvene igre, Jamb)
 3. **Cenovnik**: cene pića, u segmentima
 4. **Rođendani & zabave**: privatan i delimičan zakup
 5. **Lokacija**: adresa, radno vreme, stilizovana mapa
-6. **Kontakt**: Viber, WhatsApp, Telegram, E-mail
+6. **Kontakt**: Viber, WhatsApp, Telegram, Instagram, TikTok
 7. **Footer**
 
 ## Radno vreme
 
-**Radnim danima (pon – pet) 12:00 – 00:00, vikendom (sub – ned) 15:00 – 00:00.** Pojavljuje se na tri mesta u `index.html`:
+**Svakim danom 16:00 – 00:00.** Pojavljuje se na tri mesta u `index.html`:
 
 - sekcija Lokacija, `.addr-card` red sa `⏱` ikonicom
-- hero statovi `12–00 Radnim danima` i `15–00 Vikendom` (drugi i treći po redu)
-- JSON-LD u `<head>`, dva `openingHoursSpecification` unosa
+- hero stat `16–00 Svakim danom` (drugi po redu)
+- JSON-LD u `<head>`, jedan `openingHoursSpecification` unos za svih sedam dana
 
-Hero ima tačno tri stata, jer je `.hero-stats` grid sa 3 kolone - četvrti pada u novi red. Ranije je treći bio `24/7 Rezervacije`, što je protivrečilo tekstu u sekciji Kontakt („odgovaramo u toku radnog vremena"), a zatim `7/7 Dana u nedelji`, koji je izbačen kad je uvedeno posebno vikend radno vreme, jer se iz njega već vidi da se radi svaki dan.
+Hero sada ima dva stata, pa je `.hero-stats` grid sa 2 kolone i `max-width: 340px`. Ranije je treći stat bio `24/7 Rezervacije`, pa `7/7 Dana u nedelji`; oba su izbačena jer se iz radnog vremena već vidi da se radi svaki dan.
 
 ## Cenovnik
 
@@ -81,7 +81,7 @@ Za link preview se koristi zasebna široka retrowave slika, pa je `twitter:card`
 
 `robots.txt` dozvoljava pretraživačima pristup celom sajtu i navodi apsolutnu putanju do `sitemap.xml`. Sitemap sadrži samo kanonski URL `https://arcadebk.rs/`, jer je sajt single-page.
 
-U `<head>` delu je dodat JSON-LD tipa `EntertainmentBusiness`, sa javnim podacima koji se već vide na stranici: naziv, opis, adresa, telefon, radno vreme, mapa, Instagram i logo. Formalni registracioni i poreski podaci nisu deo strukturiranih podataka.
+U `<head>` delu je dodat JSON-LD tipa `EntertainmentBusiness`, sa javnim podacima koji se već vide na stranici: naziv, opis, adresa, telefon, radno vreme, mapa, Instagram, TikTok i logo. Formalni registracioni i poreski podaci nisu deo strukturiranih podataka.
 
 ## Kontakt podaci
 
@@ -94,11 +94,11 @@ Telefon `+381 69 403 0749` pokriva sva tri chat kanala:
 | WhatsApp | `https://wa.me/381694030749` |
 | Telegram | `https://t.me/+381694030749` |
 | Instagram | `https://www.instagram.com/arcade_bk/` |
-| E-mail | `mailto:vezilicn@gmail.com` |
+| TikTok | `https://www.tiktok.com/@arcade_bk` |
 
 Kontakt mreža je `repeat(3, 1fr)`: šest kartica staje u dva čista reda. Ako se broj kartica menja, treba uskladiti i `.contact-grid` da ne ostanu siročići u poslednjem redu.
 
-Mejl je lični, ne zvanični klupski, pa se **adresa namerno ne prikazuje** na stranici - kartica piše samo „Otvori mejl →", a `mailto:` radi normalno. Kad klub dobije zvaničnu adresu, promeni `href` i po želji prikaži je u `.handle` polju.
+Mejl je izbačen na zahtev vlasnika - adresa je bila lična, ne zvanična klupska - i zamenjen je TikTok karticom, pa mreža i dalje ima šest kartica. Stil `.ct-card.mail` je uklonjen iz `styles.css`; ako klub jednom dobije zvaničnu adresu, kartica se vraća po istom obrascu.
 
 ## Paleta i tipografija
 

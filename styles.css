@@ -173,12 +173,12 @@ h1.hero-title .l2 {
 
 .hero-stats {
     margin-top: 56px;
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 0;
     border-top: 1px solid rgba(34,225,255,0.25);
     border-bottom: 1px solid rgba(255,61,240,0.25);
     padding: 18px 0;
-    max-width: 480px;
+    max-width: 340px;
 }
 .hero-stats .stat-num {
     font-family: 'Audiowide', sans-serif;
@@ -538,7 +538,8 @@ h2.section-title {
 .ct-card.viber { color: #b78bff; box-shadow: inset 0 0 30px rgba(143,90,255,0.18), 0 0 0 1px rgba(143,90,255,0.3); }
 .ct-card.wapp { color: #5ef0a3; box-shadow: inset 0 0 30px rgba(34,225,128,0.16), 0 0 0 1px rgba(34,225,128,0.3); }
 .ct-card.tg { color: var(--cyan); box-shadow: inset 0 0 30px rgba(34,225,255,0.16), 0 0 0 1px rgba(34,225,255,0.3); }
-.ct-card.mail { color: var(--magenta); box-shadow: inset 0 0 30px rgba(255,61,240,0.16), 0 0 0 1px rgba(255,61,240,0.3); }
+.ct-card.tiktok { color: var(--magenta); box-shadow: inset 0 0 30px rgba(255,61,240,0.16), 0 0 0 1px rgba(255,61,240,0.3); }
+.ct-card.tiktok .ico { font-size: 20px; letter-spacing: 0.05em; }
 
 /* ----- Footer ----- */
 .footer {
