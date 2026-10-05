@@ -64,18 +64,78 @@ body > * { position: relative; z-index: 1; }
     align-items: center;
     position: relative;
 }
+/* Starfield in the hero sky */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute; inset: 0 0 300px 0;
+    mask: linear-gradient(180deg, black 0%, black 75%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+/* Dense field of small stars (tile sizes are primes so the pattern doesn't visibly repeat) */
+.hero::before {
+    background-image:
+            radial-gradient(1px 1px at 23px 41px, #fff 60%, transparent),
+            radial-gradient(1px 1px at 131px 97px, rgba(255,255,255,0.8) 60%, transparent),
+            radial-gradient(1.5px 1.5px at 67px 173px, #fff 50%, transparent),
+            radial-gradient(1px 1px at 211px 29px, rgba(255,255,255,0.7) 60%, transparent),
+            radial-gradient(1px 1px at 157px 211px, rgba(255,255,255,0.8) 60%, transparent),
+            radial-gradient(1px 1px at 89px 13px, rgba(200,240,255,0.8) 60%, transparent),
+            radial-gradient(1px 1px at 41px 127px, rgba(255,255,255,0.6) 60%, transparent),
+            radial-gradient(1.5px 1.5px at 173px 59px, rgba(255,210,255,0.9) 50%, transparent),
+            radial-gradient(1px 1px at 113px 149px, rgba(255,255,255,0.7) 60%, transparent),
+            radial-gradient(1px 1px at 7px 83px, rgba(255,255,255,0.6) 60%, transparent),
+            radial-gradient(1.5px 1.5px at 197px 137px, rgba(200,240,255,0.9) 50%, transparent),
+            radial-gradient(1px 1px at 59px 229px, rgba(255,255,255,0.7) 60%, transparent);
+    background-size:
+            241px 241px, 317px 317px, 389px 389px, 263px 263px, 433px 433px, 199px 199px,
+            283px 283px, 347px 347px, 223px 223px, 409px 409px, 457px 457px, 293px 293px;
+}
+/* A few larger glowing stars that twinkle */
+.hero::after {
+    background-image:
+            radial-gradient(3px 3px at 120px 80px, #fff 30%, rgba(34,225,255,0.5) 60%, transparent),
+            radial-gradient(3px 3px at 430px 210px, #fff 30%, rgba(255,61,240,0.5) 60%, transparent),
+            radial-gradient(2.5px 2.5px at 300px 40px, #fff 30%, rgba(200,240,255,0.5) 60%, transparent),
+            radial-gradient(3px 3px at 60px 330px, #fff 30%, rgba(255,61,240,0.5) 60%, transparent),
+            radial-gradient(2.5px 2.5px at 510px 400px, #fff 30%, rgba(34,225,255,0.5) 60%, transparent);
+    background-size: 587px 467px, 613px 521px, 557px 433px, 631px 487px, 659px 541px;
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from { opacity: 0.35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    .hero::after { animation: none; }
+}
+
+/* Wallpaper-style neon floor: magenta horizon + cyan perspective grid */
 .hero-grid {
     position: absolute;
     left: 0; right: 0; bottom: 0;
-    height: 320px;
+    height: 300px;
+    border-top: 2px solid #ff4dff;
     background:
-            linear-gradient(180deg, transparent 0%, rgba(34,225,255,0.05) 30%, rgba(255,61,240,0.10) 100%),
-            repeating-linear-gradient(90deg, transparent 0px, transparent 78px, rgba(34,225,255,0.55) 79px, transparent 80px),
-            repeating-linear-gradient(0deg, transparent 0px, transparent 30px, rgba(255,61,240,0.35) 31px, transparent 32px);
-    transform: perspective(420px) rotateX(58deg);
-    transform-origin: 50% 100%;
-    mask: linear-gradient(180deg, transparent 0%, black 30%, black 100%);
+            linear-gradient(180deg, transparent 65%, rgba(10,0,20,0.9) 100%),
+            url('assets/grid.svg') center / 100% 100% no-repeat,
+            linear-gradient(180deg, rgba(110,20,160,0.6) 0%, rgba(22,4,50,0.92) 22%, rgba(12,2,30,0.96) 100%);
+    filter: drop-shadow(0 0 3px rgba(34,225,255,0.75));
     pointer-events: none;
+    z-index: -1;
+}
+.hero-grid::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 100%;
+    height: 140px;
+    background: linear-gradient(0deg, rgba(255,61,240,0.45) 0%, rgba(255,61,240,0.12) 40%, transparent 100%);
+}
+.hero-grid::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: -2px;
+    height: 2px;
+    background: #ff8cff;
+    box-shadow: 0 0 8px 2px #ff3df0, 0 0 24px 6px rgba(255,61,240,0.6);
 }
 .topbar {
     position: fixed; top: 0; left: 0; right: 0;
@@ -173,22 +233,22 @@ h1.hero-title .l2 {
 
 .hero-stats {
     margin-top: 56px;
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    border-top: 1px solid rgba(34,225,255,0.25);
-    border-bottom: 1px solid rgba(255,61,240,0.25);
+    display: grid; grid-template-columns: repeat(2, max-content);
+    gap: 0 56px;
+    text-align: center;
     padding: 18px 0;
     max-width: 340px;
 }
 .hero-stats .stat-num {
     font-family: 'Audiowide', sans-serif;
-    font-size: 28px; color: var(--cyan);
-    text-shadow: 0 0 10px rgba(34,225,255,0.6);
+    font-size: 32px; color: var(--magenta);
+    text-shadow: 0 0 10px rgba(255,61,240,0.75), 0 0 4px #0a0014;
 }
 .hero-stats .stat-lbl {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ink-dim); margin-top: 4px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink); margin-top: 6px;
+    text-shadow: 0 0 4px #0a0014, 0 0 8px #0a0014, 0 0 6px rgba(255,61,240,0.5);
 }
 
 .hero-logo-wrap {
@@ -203,7 +263,7 @@ h1.hero-title .l2 {
     z-index: -1;
 }
 .hero-logo-wrap img {
-    width: 100%; max-width: 460px; height: auto;
+    width: 100%; max-width: 480px; height: auto;
     filter: drop-shadow(0 0 30px rgba(34,225,255,0.4)) drop-shadow(0 0 60px rgba(255,61,240,0.4));
 }
 
@@ -584,6 +644,8 @@ h2.section-title {
         gap: 32px;
     }
     .hero-logo-wrap { order: -1; }
+    .hero-grid { height: 220px; }
+    .hero::before, .hero::after { bottom: 220px; }
     .hero-logo-wrap img { max-width: 220px; margin: 0 auto; }
     h1.hero-title { font-size: 64px; }
 
@@ -639,7 +701,8 @@ h2.section-title {
     .hero-sub { font-size: 15px; }
     .hero-logo-wrap img { max-width: 160px; }
     .hero-stats { max-width: 100%; }
-    .hero-stats .stat-num { font-size: 22px; }
+    .hero-stats .stat-num { font-size: 26px; }
+    .hero-stats .stat-lbl { font-size: 12px; }
     .cta-row { flex-direction: column; }
     .btn { width: 100%; justify-content: center; font-size: 12px; padding: 12px 20px; }
 
@@ -683,8 +746,8 @@ h2.section-title {
 @media (max-width: 400px) {
     h1.hero-title { font-size: 36px; }
     .hero-logo-wrap img { max-width: 130px; }
-    .hero-stats .stat-num { font-size: 18px; }
-    .hero-stats .stat-lbl { font-size: 9px; }
+    .hero-stats .stat-num { font-size: 22px; }
+    .hero-stats .stat-lbl { font-size: 11px; }
 
     .topbar { padding: 9px 12px; }
     .topbar .nav { gap: 6px 12px; font-size: 9px; letter-spacing: 0.08em; }
