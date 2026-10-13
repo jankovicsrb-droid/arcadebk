@@ -109,6 +109,59 @@
     </div>
 </section>
 
+<!-- ===================== EVENT START =====================
+     Promo blok za trenutni event. Kada se event zavrsi, sekcija se
+     sama sakrije (data-end). Za potpuno uklanjanje obrisi sve izmedju
+     EVENT START i EVENT END. Za novi event: zameni poster u
+     assets/events/, tekstove i datume (data-start / data-end).
+     ======================================================= -->
+<section class="section event" id="event"
+         data-start="2026-10-24T19:00:00+02:00"
+         data-end="2026-10-25T03:00:00+02:00">
+    <a class="event-poster" href="assets/events/ufc6-poster.jpg" target="_blank" rel="noopener">
+        <img src="assets/events/ufc6-poster.jpg" alt="Poster: EA Sports UFC 6 turnir u Arcade BK, 24. oktobar u 19h" width="1080" height="1350" loading="lazy">
+        <span class="event-poster-hint">Ceo poster ↗</span>
+    </a>
+
+    <div class="event-body">
+        <div class="event-eyebrow"><span class="live-dot"></span>Event · Prijave otvorene</div>
+        <h2 class="event-title">UFC 6 <span>Turnir</span></h2>
+        <p class="event-sub">PlayStation 5 turnir. Uđi u oktagon — <strong>samo jedan</strong> izlazi kao šampion.</p>
+
+        <div class="event-facts">
+            <div class="fact cyan">
+                <div class="fact-lbl">Datum</div>
+                <div class="fact-val">24. oktobar</div>
+                <div class="fact-note">Početak 19:00h</div>
+            </div>
+            <div class="fact magenta">
+                <div class="fact-lbl">Prijave do</div>
+                <div class="fact-val">22. oktobra</div>
+                <div class="fact-note">u lokalu</div>
+            </div>
+            <div class="fact yellow">
+                <div class="fact-lbl">Kotizacija</div>
+                <div class="fact-val">1.000 RSD</div>
+                <div class="fact-note">po igraču</div>
+            </div>
+        </div>
+
+        <div class="event-prizes">
+            <div><span class="place">1.</span> 10.000 RSD</div>
+            <div><span class="place">2.</span> 20h igranja</div>
+            <div><span class="place">3.</span> 10h igranja</div>
+        </div>
+
+        <div class="event-countdown" data-countdown aria-live="off"></div>
+
+        <div class="cta-row">
+            <a href="#kontakt" class="btn btn-primary">Prijavi se →</a>
+            <span class="event-tag">Broj mesta ograničen!</span>
+        </div>
+    </div>
+</section>
+<!-- ====================== EVENT END ====================== -->
+
 <!-- AKTIVNOSTI -->
 <section class="section" id="aktivnosti">
     <div class="section-head">
@@ -532,6 +585,27 @@
     <div class="arcade">★ ARCADE · BK ★</div>
     <div>© 2026 · Maršala Tita 120, Banja Koviljača</div>
 </footer>
+
+<script>
+/* Event: odbrojavanje do pocetka i automatsko sakrivanje posle kraja */
+document.querySelectorAll('.event[data-end]').forEach(function (ev) {
+    var start = new Date(ev.dataset.start).getTime();
+    var end = new Date(ev.dataset.end).getTime();
+    var out = ev.querySelector('[data-countdown]');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+        var now = Date.now();
+        if (now >= end) { ev.remove(); return; }
+        if (!out) return;
+        if (now >= start) { out.innerHTML = '<b>U toku!</b> Dođi da navijaš.'; return; }
+        var s = Math.floor((start - now) / 1000);
+        var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+        out.innerHTML = 'Do početka: <b>' + d + '</b>d <b>' + pad(h) + '</b>h <b>' + pad(m) + '</b>m';
+        setTimeout(tick, 30000);
+    }
+    tick();
+});
+</script>
 
 </body>
 </html>
