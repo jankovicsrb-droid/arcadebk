@@ -66,6 +66,7 @@
 
 <div class="topbar">
     <nav class="nav">
+        <a href="#event" class="nav-event" data-event-link>Turnir</a><!-- EVENT link: obrisi zajedno sa event sekcijom -->
         <a href="#aktivnosti">Aktivnosti</a>
         <a href="#cenovnik">Cenovnik</a>
         <a href="#rodjendani">Rođendani</a>
@@ -587,15 +588,30 @@
 </footer>
 
 <script>
-/* Event: odbrojavanje do pocetka i automatsko sakrivanje posle kraja */
+/* Event: odbrojavanje do pocetka, automatsko sakrivanje posle kraja,
+   i skok na #event za nove posetioce dok je event aktivan */
 document.querySelectorAll('.event[data-end]').forEach(function (ev) {
     var start = new Date(ev.dataset.start).getTime();
     var end = new Date(ev.dataset.end).getTime();
     var out = ev.querySelector('[data-countdown]');
     function pad(n) { return String(n).padStart(2, '0'); }
+    function hide() {
+        ev.remove();
+        document.querySelectorAll('[data-event-link]').forEach(function (a) { a.remove(); });
+    }
+    if (Date.now() >= end) { hide(); return; }
+
+    // Novi posetilac (jednom po eventu, samo ako link ne vodi na drugu sekciju)
+    var seenKey = 'arcadebk-event-seen:' + ev.dataset.start;
+    var seen = false;
+    try { seen = localStorage.getItem(seenKey) === '1'; localStorage.setItem(seenKey, '1'); } catch (e) {}
+    if (!seen && !location.hash) {
+        setTimeout(function () { ev.scrollIntoView({ block: 'start' }); }, 500);
+    }
+
     function tick() {
         var now = Date.now();
-        if (now >= end) { ev.remove(); return; }
+        if (now >= end) { hide(); return; }
         if (!out) return;
         if (now >= start) { out.innerHTML = '<b>U toku!</b> Dođi da navijaš.'; return; }
         var s = Math.floor((start - now) / 1000);

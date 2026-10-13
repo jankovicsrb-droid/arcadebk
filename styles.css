@@ -770,6 +770,19 @@ h2.section-title {
     box-shadow: 0 -1px 18px rgba(255,61,240,0.25), 0 1px 18px rgba(34,225,255,0.18);
 }
 
+/* Highlighted event link in the top menu */
+.topbar .nav a.nav-event {
+    color: var(--magenta); opacity: 1;
+    text-shadow: 0 0 8px rgba(255,61,240,0.7);
+    display: inline-flex; align-items: center; gap: 6px;
+}
+.topbar .nav a.nav-event::before {
+    content: '';
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--magenta); box-shadow: 0 0 8px var(--magenta);
+    animation: live-pulse 1.4s ease-in-out infinite;
+}
+
 /* Poster in a tilted neon frame */
 .event-poster {
     position: relative;
@@ -902,7 +915,7 @@ h2.section-title {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .live-dot { animation: none; }
+    .live-dot, .topbar .nav a.nav-event::before { animation: none; }
     .event-poster, .event-poster:hover { transform: none; }
 }
 
